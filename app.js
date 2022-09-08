@@ -155,7 +155,7 @@ const search = () => {
     const input = getInputbyIdValue('search');
     const contacts = getLs('contacts');
     const matched = contacts.filter(contact => contact.name.includes(input));
-    if (matched.length > 1) {
+    if (matched.length > 0) {
         setLs(matched, 'search');
     }
     else {
