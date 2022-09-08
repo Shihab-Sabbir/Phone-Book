@@ -20,6 +20,7 @@ const display = (lsName) => {
     visibility('warning', 'none');
     visibility('search-body', 'flex');
     visibility('contact-heading', 'block');
+    visibility('seacrh-container', 'none');
     const contacts = getLs(lsName);
     const ul = document.getElementById('number-container');
     ul.innerHTML = '';
@@ -43,7 +44,7 @@ const display = (lsName) => {
 
         }
     }
-    else { ul.innerHTML = 'No Contacts' }
+    else { ul.innerHTML = `<li class='text-center'>No Contacts</li>` }
 }
 
 const setLs = (data, lsName) => {
@@ -154,5 +155,14 @@ const search = () => {
     const input = getInputbyIdValue('search');
     const contacts = getLs('contacts');
     const matched = contacts.filter(contact => contact.name.includes(input));
-    setLs(matched, 'search');
+    if (matched.length > 1) {
+        setLs(matched, 'search');
+    }
+    else {
+        visibility('number-container', 'none')
+        visibility('seacrh-container', 'block')
+        const cont = document.getElementById('seacrh-container');
+        cont.innerHTML = `<li class='text-center'>No Contacts Found !! <i class="fa-regular fa-face-frown-open"></i></li>`;
+    }
+
 }
