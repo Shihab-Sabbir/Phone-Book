@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Book</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.25.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/522c98dd95.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="container mx-auto flex flex-col justify-between items-center h-screen">
+    <section class="w-full min-h-1/3">
+        <h3 class="text-xl font-bold my-5 text-center">Phone Book</h3>
+        <div class="flex items-center justify-around">
+            <div class="flex">
+                <div class="text-accent text-4xl mr-3" onclick="display('contacts')" id="home"><i
+                        class="fa-solid fa-house cursor-pointer"></i>
+                </div>
+                <div class="text-accent text-4xl" onclick="addNew()" id="addNew"><i
+                        class="fa-regular fa-square-plus cursor-pointer"></i>
+                </div>
+            </div>
+            <div class="input-group max-w-fit" id="search-body">
+                <input type="text" placeholder="Search…" class="input input-accent" id="search" />
+                <button class="btn btn-square bg-accent border-0" onclick="search()" id="search-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+    <div id="form" class="flex justify-center" style="display:none;">
+        <input type="text" id="name-field" placeholder="Your Name"
+            class="input input-bordered input-accent w-full max-w-xs my-2" onchange="inputValidation()">
+        <br>
+        <input type="number" id="number-field" placeholder="Your Number"
+            class="input input-bordered input-accent w-full max-w-xs my-2" onchange="inputValidation()">
+        <br>
+        <div class="flex justify-around items-center">
+            <button id="submit-btn" class="btn btn-outline btn-success" onclick="setContactToLs()"
+                disabled>Submit</button>
+            <button class="btn btn-outline btn-info" id="cancle-btn" onclick="display('contacts')">Cancle</button>
+            <button class="btn btn-outline btn-success" id="save-btn" onclick="save()">Save</button>
+        </div>
+    </div>
+    <section class="w-full h-2/3">
+        <h4 id="warning"></h4>
+        <h6 class="my-3 text-center font-bold underline uppercase" id="contact-heading" style="display:none;">Contacts</h6>
+        <ul class="overflow-y-auto" id="number-container">
+        </ul>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
