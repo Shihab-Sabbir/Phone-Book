@@ -21,6 +21,9 @@ const display = (lsName) => {
     visibility('search-body', 'flex');
     visibility('contact-heading', 'block');
     visibility('seacrh-container', 'none');
+    if (lsName === 'search') { document.getElementById('contact-heading').innerText = 'Search Result' }
+    else { document.getElementById('contact-heading').innerText = 'contacts' }
+
     const contacts = getLs(lsName);
     const ul = document.getElementById('number-container');
     ul.innerHTML = '';
@@ -155,6 +158,7 @@ const search = () => {
     const input = getInputbyIdValue('search');
     const contacts = getLs('contacts');
     const matched = contacts.filter(contact => contact.name.includes(input));
+    console.log(matched)
     if (matched.length > 0) {
         setLs(matched, 'search');
     }
